@@ -1,23 +1,69 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Node modules
+node_modules/
 
-# testing
-/coverage
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# production
-/build
+# Firebase config
+firebase.json
+.firebaserc
 
-# misc
+# Production build
+build/
+
+# System files
 .DS_Store
+Thumbs.db
+
+# Environment variables
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# VS Code settings
+.vscode/
+
+# Testing
+coverage/
+*.lcov
+
+# Miscellaneous
+*.swp
+*.bak
+*.tmp
+
+# Next.js
+.next/
+
+# Tailwind
+tailwind.config.js
+
+# Yarn
+.yarn/
+
+# Other
+.pnp.*
+.pnp.js
+
+# Ignore Firebase Hosting cache
+.firebase/cache/
+
+# Ignore MacOS system files
+.DS_Store
+
+# Ignore IntelliJ IDEA project files
+.idea/
+
+# Ignore JetBrains IDE project files
+*.iml
+
+# Ignore eslint cache
+.eslintcache
