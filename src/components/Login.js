@@ -1,20 +1,20 @@
 import React, { useRef, useState } from "react";
-import Header from "./Header";
 import { Link, useNavigate } from "react-router-dom";
 import { checkValidData } from "../utils/validate";
 
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import Header from "./Header";
 
 const Login = () => {
 	const [isSignIn, setIsSignIn] = useState(true);
 	const [emailError, setEmailError] = useState(null);
 	const [passwordError, setPasswordError] = useState(null);
 
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const name = useRef(null);
+	const name = useRef(null);
 	const email = useRef(null);
 	const password = useRef(null);
 
@@ -77,15 +77,17 @@ const Login = () => {
 		}
 	};
 
-
 	return (
 		<div className="relative h-screen w-screen">
-			<img
+			{/* <img
 				src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
 				alt="Netflix Logo"
 				className="w-56 absolute z-10 m-10"
-			/>
-			<div className="absolute inset-0 z-0">
+			/> */}
+			<div className="absolute z-40">
+				<Header />
+			</div>
+			<div className="absolute inset-0 -z-10">
 				<img
 					src="https://assets.nflxext.com/ffe/siteui/vlv3/8728e059-7686-4d2d-a67a-84872bd71025/e90516bd-6925-4341-a6cf-0b9f3d0c140a/IN-en-20240708-POP_SIGNUP_TWO_WEEKS-perspective_WEB_34324b52-d094-482b-8c2a-708dc64c9065_large.jpg"
 					alt="background-img"
