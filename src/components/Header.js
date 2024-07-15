@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import useUserStore from "../utils/useUserStore";
+import { NETFLIX_LOGO, USER_AVATAR } from "../utils/constant";
 
 const Header = () => {
 	//Zustand store
@@ -54,7 +55,7 @@ const Header = () => {
 			<div className="logo">
 				<Link to="/browse">
 					<img
-						src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+						src={NETFLIX_LOGO}
 						alt="Netflix Logo"
 						className="w-52"
 					/>
@@ -69,7 +70,7 @@ const Header = () => {
 						>
 							<img
 								className="w-13 h-12 mr-10"
-								src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png?20201013161117"
+								src={USER_AVATAR}
 								alt="User Icon"
 							/>
 							<span className="font-bold mr-10">
