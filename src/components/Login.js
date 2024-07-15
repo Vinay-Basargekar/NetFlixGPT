@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { checkValidData } from "../utils/validate";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
 
@@ -12,6 +12,9 @@ const Login = () => {
 	const [emailError, setEmailError] = useState(null);
 	const [passwordError, setPasswordError] = useState(null);
 
+  const navigate = useNavigate();
+
+  const name = useRef(null);
 	const email = useRef(null);
 	const password = useRef(null);
 
@@ -27,21 +30,28 @@ const Login = () => {
 		setEmailError(emailError);
 		setPasswordError(passwordError);
 
-		// If there are validation errors, do not proceed
 		if (emailError || passwordError) return;
 
 		if (!isSignIn) {
-			// Sign up logic
 			createUserWithEmailAndPassword(
 				auth,
 				email.current.value,
 				password.current.value
 			)
 				.then((userCredential) => {
-					// Signed up
 					const user = userCredential.user;
-					console.log(user);
-					// Reset form fields or redirect user as needed
+					updateProfile(user, {
+						displayName: name.current.value,
+					})
+						.then(() => {
+							console.log("Profile updated:", user);
+							navigate("/Browse");
+						})
+						.catch((error) => {
+							console.log("Profile update error:", error);
+							setEmailError(error.message);
+							setPasswordError(error.message);
+						});
 				})
 				.catch((error) => {
 					const errorMessage = error.message;
@@ -49,20 +59,17 @@ const Login = () => {
 					setPasswordError(errorMessage);
 				});
 		} else {
-			// Sign in logic
 			signInWithEmailAndPassword(
 				auth,
 				email.current.value,
 				password.current.value
 			)
 				.then((userCredential) => {
-					// Signed in
 					const user = userCredential.user;
-					console.log(user);
-					// ...
+					console.log("Signed in:", user);
+					navigate("/Browse");
 				})
 				.catch((error) => {
-					const errorCode = error.code;
 					const errorMessage = error.message;
 					setEmailError(errorMessage);
 					setPasswordError(errorMessage);
@@ -70,9 +77,14 @@ const Login = () => {
 		}
 	};
 
+
 	return (
 		<div className="relative h-screen w-screen">
-			<Header />
+			<img
+				src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+				alt="Netflix Logo"
+				className="w-56 absolute z-10 m-10"
+			/>
 			<div className="absolute inset-0 z-0">
 				<img
 					src="https://assets.nflxext.com/ffe/siteui/vlv3/8728e059-7686-4d2d-a67a-84872bd71025/e90516bd-6925-4341-a6cf-0b9f3d0c140a/IN-en-20240708-POP_SIGNUP_TWO_WEEKS-perspective_WEB_34324b52-d094-482b-8c2a-708dc64c9065_large.jpg"
@@ -97,6 +109,7 @@ const Login = () => {
 								type="text"
 								placeholder="Full Name"
 								className="w-full p-2 mb-4 rounded bg-gray-800 text-white"
+								ref={name}
 								required
 							/>
 						)}
