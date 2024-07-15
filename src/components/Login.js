@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { checkValidData } from "../utils/validate";
 
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -12,7 +12,6 @@ const Login = () => {
 	const [emailError, setEmailError] = useState(null);
 	const [passwordError, setPasswordError] = useState(null);
 
-	const navigate = useNavigate();
 
 	const name = useRef(null);
 	const email = useRef(null);
@@ -45,7 +44,7 @@ const Login = () => {
 					})
 						.then(() => {
 							console.log("Profile updated:", user);
-							navigate("/Browse");
+							
 						})
 						.catch((error) => {
 							console.log("Profile update error:", error);
@@ -67,7 +66,7 @@ const Login = () => {
 				.then((userCredential) => {
 					const user = userCredential.user;
 					console.log("Signed in:", user);
-					navigate("/Browse");
+					
 				})
 				.catch((error) => {
 					const errorMessage = error.message;
