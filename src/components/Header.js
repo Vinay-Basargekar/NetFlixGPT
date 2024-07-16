@@ -47,18 +47,10 @@ const Header = () => {
 	}, [setUser, clearUser, navigate]);
 
 	return (
-		<header
-			className={`flex justify-between items-center p-4 ${
-				user ? "bg-black opacity-90" : ""
-			}`}
-		>
+		<header className="absolute z-50 w-screen flex justify-between items-center p-4 bg-gradient-to-b from-black  ">
 			<div className="logo">
 				<Link to="/browse">
-					<img
-						src={NETFLIX_LOGO}
-						alt="Netflix Logo"
-						className="w-52"
-					/>
+					<img src={NETFLIX_LOGO} alt="Netflix Logo" className="w-52" />
 				</Link>
 			</div>
 			{user && (
@@ -105,7 +97,7 @@ const Header = () => {
 						)}
 					</div>
 				</div>
-			)}
+			)}  
 		</header>
 	);
 };

@@ -6,17 +6,17 @@ import VideoBackground from "./VideoBackground";
 function MainContainer() {
 	const movies = useMoviesStore((state) => state.movies);
 
-	if (!movies) return;
+	if (!movies || movies.length === 0) {
+		return <div>Loading...</div>; // Loading state
+	}
 
 	const mainMovie = movies[0];
-	console.log(mainMovie);
-
-	const { original_title, overview } = mainMovie;
+	const { id, original_title, overview } = mainMovie;
 
 	return (
-		<div>
+		<div className="relative w-screen h-screen ">
 			<VideoTitle title={original_title} overview={overview} />
-			<VideoBackground />
+			<VideoBackground movieId={id} />
 		</div>
 	);
 }
