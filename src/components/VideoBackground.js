@@ -8,7 +8,7 @@ const VideoBackground = ({ movieId }) => {
 	useMovieTrailer({ movieId });
 
 	return (
-		<div className="relative w-screen h-screen ">
+		<div className="relative w-screen h-screen">
 			<iframe
 				className="absolute -z-10 top-0 left-0 w-full h-full"
 				style={{ transform: "scale(1.5)", transformOrigin: "center" }}
