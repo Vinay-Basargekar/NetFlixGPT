@@ -19,7 +19,7 @@ const useMovieTrailer = ({ movieId }) => {
 				json.results.find((video) => video.name.includes("Official Trailer")) ||
 				json.results[0];
 			setTrailerUrl(
-				`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1`
+				`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&loop=1&playlist=${trailer.key}`
 			);
 		};
 
