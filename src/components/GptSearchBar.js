@@ -57,23 +57,23 @@ const GptSearch = () => {
 	};
 
 	return (
-		<div className="pt-[35%] md:pt-[10%] flex justify-center opacity-[90%]">
-			<div className="bg-black p-6 px-24 w-[50%] rounded-lg shadow-lg">
-				<h1 className="text-3xl font-bold mb-6 text-center text-red-600">
+		<div className="pt-[30%] md:pt-[10%] flex justify-center opacity-[90%]">
+			<div className="bg-black p-4 px-4 md:px-24 w-[90%] md:w-[50%] md:rounded-lg shadow-lg">
+				<h1 className="text-xl p-2 md:p-0 md:text-3xl font-bold md:mb-6 text-center text-red-600">
 					Movie Recommendations
 				</h1>
 				<form
-					className="flex items-center"
+					className="flex md:flex-row items-center"
 					onSubmit={(e) => e.preventDefault()}
 				>
 					<input
 						ref={searchText}
 						type="text"
-						className="flex-grow p-4 bg-gray-800 border border-gray-700  text-white"
+						className="flex-grow p-2 md:text-xl md:p-4 bg-gray-800 border border-gray-700 text-white mb-4 md:mb-4 "
 						placeholder="What do you want to watch?"
 					/>
 					<button
-						className="p-4 bg-red-600 text-white  hover:bg-red-700"
+						className="p-2 mb-4 md:p-4 md:text-xl bg-red-600 text-white hover:bg-red-700  md:w-auto"
 						onClick={handleSearch}
 					>
 						Search

@@ -51,9 +51,9 @@ const Header = () => {
 
 	return (
 		<header className="absolute z-50 w-screen flex justify-between items-center p-4 bg-gradient-to-b from-black">
-			<div className="logo">
+			<div className="">
 				<Link to="/browse">
-					<img src={NETFLIX_LOGO} alt="Netflix Logo" className="w-52" />
+					<img src={NETFLIX_LOGO} alt="Netflix Logo" className="w-20 mb-2 md:w-52" />
 				</Link>
 			</div>
 
@@ -61,7 +61,7 @@ const Header = () => {
 				<div className="relative flex items-center space-x-4">
 					<button
 						onClick={setToggle}
-						className="relative z-10 py-2 px-3 mx-2 mb-6 font-bold text-white transition-all duration-300 ease-in-out bg-purple-600 border border-white-900 cursor-pointer bg-[url('data:image/svg+xml,%3Csvg xmlns=&#39http://www.w3.org/2000/svg&#39 viewBox=&#390 0 531.28 200&#39%3E%3Cdefs%3E%3Cstyle%3E .shape %7B fill: %23FF4655 %7D %3C/style%3E%3C/defs%3E%3Cg id=&#39Layer_2&#39 data-name=&#39Layer 2&#39%3E%3Cg id=&#39Layer_1-2&#39 data-name=&#39Layer 1&#39%3E%3Cpolygon class=&#39shape&#39 points=&#39415.81 200 0 200 115.47 0 531.28 0 415.81 200&#39 /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A')] bg-contain bg-no-repeat"
+						className="relative z-10 py-0 mb-4 md:py-2 px-2 md:px-3 md:mx-2 md:mb-6 font-bold text-white transition-all duration-300 ease-in-out bg-purple-600 border border-white-900 cursor-pointer bg-[url('data:image/svg+xml,%3Csvg xmlns=&#39http://www.w3.org/2000/svg&#39 viewBox=&#390 0 531.28 200&#39%3E%3Cdefs%3E%3Cstyle%3E .shape %7B fill: %23FF4655 %7D %3C/style%3E%3C/defs%3E%3Cg id=&#39Layer_2&#39 data-name=&#39Layer 2&#39%3E%3Cg id=&#39Layer_1-2&#39 data-name=&#39Layer 1&#39%3E%3Cpolygon class=&#39shape&#39 points=&#39415.81 200 0 200 115.47 0 531.28 0 415.81 200&#39 /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A')] bg-contain bg-no-repeat"
 						style={{
 							fontFamily: "'Ropa Sans', sans-serif",
 							fontSize: "15px",
@@ -77,11 +77,11 @@ const Header = () => {
 							onClick={toggleDropdown}
 						>
 							<img
-								className="w-13 h-12 mr-2"
+								className="w-8 h-8 md:w-auto md:h-12 md:mr-2"
 								src={USER_AVATAR}
 								alt="User Icon"
 							/>
-							<span className="font-bold mr-4">
+							<span className="font-bold md:mr-4 text-sm md:text-lg">
 								{user ? user.displayName : "No user"}
 							</span>
 						</button>

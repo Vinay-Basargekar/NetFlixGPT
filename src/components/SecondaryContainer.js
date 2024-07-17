@@ -8,10 +8,10 @@ function SecondaryContainer() {
 
 	return (
 		<div>
-			<div className="-mt-24 pl-12 relative z-50 w-screen font-bold bg-gradient-to-t from-black">
+			<div className=" bg-black md:bg-transparent md:-mt-24 md:pl-12 relative z-50 w-screen font-bold md:bg-gradient-to-t from-black">
 				<MovieList title={"Now playing"} movies={movies} />
 			</div>
-			<div className="-mt-2 pl-12 relative z-20 w-screen bg-black font-bold">
+			<div className="-mt-2 md:pl-12 relative z-20 w-screen bg-black font-bold">
 				<MovieList title={"Trending"} movies={movies} />
 				<MovieList title={"Must watch"} movies={movies} />
 			</div>
