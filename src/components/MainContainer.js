@@ -5,6 +5,7 @@ import VideoBackground from "./VideoBackground";
 
 function MainContainer() {
 	const movies = useMoviesStore((state) => state.movies);
+	console.log(movies);
 
 	if (!movies || movies.length === 0) {
 		return <div>Loading...</div>; // Loading state

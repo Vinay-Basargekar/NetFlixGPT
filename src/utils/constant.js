@@ -4,13 +4,17 @@ export const NETFLIX_LOGO =
 export const USER_AVATAR =
 	"https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png?20201013161117";
 
+export const BG_URL =
+	"https://assets.nflxext.com/ffe/siteui/vlv3/8728e059-7686-4d2d-a67a-84872bd71025/e90516bd-6925-4341-a6cf-0b9f3d0c140a/IN-en-20240708-POP_SIGNUP_TWO_WEEKS-perspective_WEB_34324b52-d094-482b-8c2a-708dc64c9065_large.jpg";
+
 export const API_OPTIONS = {
 	method: "GET",
 	headers: {
 		accept: "application/json",
-		Authorization:
-			"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNzMyNmY5ZGIwZjlmNDQ1YjI3N2ZiZTRiNzhhMmUyZSIsIm5iZiI6MTcyMTA0OTM5OC44MDYwODIsInN1YiI6IjY2OTUxZWU1ZTkyYWI0ZDMyMGJhY2E4OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Up4I-1UcqR5bA-qew98PJK7-MLu2F8BS0l5P256SJJE",
+		Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
 	},
 };
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
+
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;

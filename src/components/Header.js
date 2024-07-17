@@ -48,6 +48,7 @@ const Header = () => {
 		return () => unsubscribe();
 	}, [setUser, clearUser, navigate]);
 
+
 	return (
 		<header className="absolute z-50 w-screen flex justify-between items-center p-4 bg-gradient-to-b from-black">
 			<div className="logo">
