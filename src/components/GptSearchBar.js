@@ -9,51 +9,45 @@ const GptSearch = () => {
 
 	// search movie in TMDB
 	const searchMovieTMDB = async (movie) => {
-		const data = await fetch(
-			"https://api.themoviedb.org/3/search/movie?query=" +
-				movie +
-				"&include_adult=false&language=en-US&page=1",
+		const response = await fetch(
+			`https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&language=en-US&page=1`,
 			API_OPTIONS
 		);
-		const json = await data.json();
-
-		return json.results;
+		const data = await response.json();
+		return data.results;
 	};
 
 	const handleSearch = async () => {
 		//make an API call to GPT api
-		// console.log(searchText.current.value);
+		const gptQuery =
+			`Act as a Movie Recommendation system and suggest some movies for the query: ${searchText.current.value}.` +
+			"Only give me names of 5 movies, comma separated like the example result given ahead. Example Result: Inside Out 2, Sholay, Don, Demon Slayer, No Way Home";
 
-		// const gptQuery =
-		// 	"Act as a Movie Recommendation system and suggest some movies for the query : " +
-		// 	searchText.current.value +
-		// 	". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Inside Out 2, Sholay, Don, Demon Slayer, No Way Home";
+		const gptResults = await openai.chat.completions.create({
+			messages: [{ role: "user", content: gptQuery }],
+			model: "gpt-3.5-turbo",
+		});
 
-		// const gptResults = await openai.chat.completions.create({
-		// 	messages: [{ role: "user", content: gptQuery }],
-		// 	model: "gpt-3.5-turbo",
-		// });
+		if (!gptResults.choices) {
+			// TODO: Write Error Handling
+			return;
+		}
+		// console.log(gptResults);
+		console.log(gptResults.choices?.[0]?.message?.content);
+		const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
 
-		// if (!gptResults.choices) {
-		// 	// TODO: Write Error Handling
-		// }
-		// console.log(gptResults.choices?.[0]?.message?.content);
-
-		// Andaz Apna Apna, Hera Pheri, Chupke Chupke, Jaane Bhi Do Yaaro, Padosan
-		// const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
-
-		const tryMovies = [
-			"Demon slayer",
-			"Inside Out 2",
-			"Chupke Chupke",
-			"Jaane Bhi Do Yaaro",
-			"Padosan",
-		];
-		const promiseArray = tryMovies.map((movie) => searchMovieTMDB(movie));
+		// const tryMovies = [
+		// 	"Demon slayer",
+		// 	"Inside Out 2",
+		// 	"Chupke Chupke",
+		// 	"Jaane Bhi Do Yaaro",
+		// 	"Padosan",
+		// ];
+		const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
 		// [Promise, Promise, Promise, Promise, Promise]
 		const tmdbResults = await Promise.all(promiseArray);
-		console.log(tmdbResults);
-		storeGptresults(tryMovies, tmdbResults);
+		// console.log(tmdbResults);
+		storeGptresults(gptMovies, tmdbResults);
 	};
 
 	return (
