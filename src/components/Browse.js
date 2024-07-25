@@ -6,6 +6,8 @@ import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import GptSearch from "./GptSearch";
 import useGptStore from "../utils/useGptStore";
+import useUpcomingMovie from "../hooks/useUpcomingMovie";
+import usePopularMovie from "../hooks/usePopularMovie";
 
 const Browse = () => {
 	// const movies = useMoviesStore((state) => state.movies);
@@ -14,6 +16,8 @@ const Browse = () => {
 	const toggleGpt = useGptStore((state) => state.toggleGpt);
 
 	usePlayMovie();
+	useUpcomingMovie();
+	usePopularMovie();
 
 	return (
 		<div>
