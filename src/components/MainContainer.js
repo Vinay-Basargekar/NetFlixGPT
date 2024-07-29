@@ -16,7 +16,7 @@ function MainContainer() {
 
 	return (
 		<div className="relative w-screen md:h-screen">
-			<VideoTitle title={original_title} overview={overview} />
+			<VideoTitle title={original_title} overview={overview} movieId={id} />
 			<VideoBackground movieId={id} />
 		</div>
 	);
