@@ -4,6 +4,8 @@ import usePlayMovie from "../hooks/usePlayMovie";
 import MainContainer from "./MainContainer";
 // import useMoviesStore from "../utils/useMoviesStore";
 import SecondaryContainer from "./SecondaryContainer";
+import Footer from "./Footer";
+
 import GptSearch from "./GptSearch";
 import useGptStore from "../utils/useGptStore";
 import useUpcomingMovie from "../hooks/useUpcomingMovie";
@@ -28,6 +30,7 @@ const Browse = () => {
 				<>
 					<MainContainer />
 					<SecondaryContainer />
+					<Footer/>
 				</>
 			)}
 		</div>

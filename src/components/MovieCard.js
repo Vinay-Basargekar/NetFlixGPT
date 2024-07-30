@@ -10,7 +10,10 @@ const MovieCard = ({ posterPath, movieId }) => {
 	};
 
 	return (
-		<div className="w-36 md:w-48 pr-4" onClick={() => handleClick(movieId)}>
+		<div
+			className="w-36 md:w-48 pr-4 transition-transform duration-300 ease-in-out transform hover:scale-95 cursor-pointer"
+			onClick={() => handleClick(movieId)}
+		>
 			<img
 				src={IMG_CDN_URL + posterPath}
 				alt="img-logo"
