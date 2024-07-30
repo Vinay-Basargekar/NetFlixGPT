@@ -4,6 +4,7 @@ import Browse from "./Browse";
 import WatchMovie from "./WatchMovie";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
+import WatchMovieComponent from "./WatchMovieComponent";
 
 const Body = () => {
 
@@ -17,8 +18,12 @@ const Body = () => {
 			element: <Browse />,
 		},
 		{
-			path: "/playMovie",
+			path: "/playMovie/",
 			element: <WatchMovie />,
+		},
+		{
+			path: "/playMovie/:id",
+			element: <WatchMovieComponent />,
 		},
 		{
 			path:"/error",

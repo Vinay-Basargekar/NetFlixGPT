@@ -3,14 +3,8 @@ import { useNavigate } from "react-router-dom";
 const VideoTitle = ({ title, overview, movieId }) => {
 	const navigate = useNavigate();
 
-	const playMovie = () => {
-		navigate("/playMovie", {
-			state: {
-				movieTrailer: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace with actual trailer URL if available
-				description: overview,
-				title: title,
-			},
-		});
+	const playMovie = (id) => {
+		navigate(`/playMovie/${id}`);
 	};
 
 	return (
@@ -21,7 +15,7 @@ const VideoTitle = ({ title, overview, movieId }) => {
 			</p>
 			<div className="my-4 md:m-0">
 				<button
-					onClick={playMovie}
+					onClick={() => playMovie(movieId)}
 					className=" bg-white text-black py-1 md:py-4 px-2 md:px-12 md:text-xl  md:rounded-lg hover:bg-opacity-80 hover:cursor-pointer"
 				>
 					▶Play

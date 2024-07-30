@@ -11,7 +11,7 @@ function MainContainer() {
 		return <div>Loading...</div>; // Loading state
 	}
 
-	const mainMovie = movies[0];
+	const mainMovie = movies[1];
 	const { id, original_title, overview } = mainMovie;
 
 	return (

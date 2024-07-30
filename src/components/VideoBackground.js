@@ -13,7 +13,7 @@ const VideoBackground = ({ movieId }) => {
 				className="absolute -z-10 top-2 md:top-0 left-0 w-full h-full md:transform md:scale-150 md:transform-origin-center"
 				src={trailerURL}
 				title="YouTube video player"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
 			></iframe>
 		</div>
 	);
